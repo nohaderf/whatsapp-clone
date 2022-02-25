@@ -1,0 +1,52 @@
+.message-form {
+    /* position: absolute;
+    bottom: 0; */
+    width: 100vw;
+    display: flex;
+    /* justify-content: space-around; */
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #f2eff1;
+}
+
+.message-form input {
+    width: 58vw;
+    margin: 0px 10px;
+    /* margin-bottom: 20px; */
+    padding: 10px;
+    border-radius: 50px;
+    outline: none;
+    border: none;
+}
+
+.message-form .btn {
+    outline: none;
+    border: none;
+    cursor: pointer;
+    color: rgb(174, 174, 174);
+    
+}
+
+.msg-icons {
+    display: flex;
+    align-items: center;
+}
+
+.attachment {
+    color: rgb(174, 174, 174);
+    margin: 5px;
+}
+
+.message-form .material-icons {
+    color: rgb(174, 174, 174);
+    width: 30px;
+    font-size: 176%;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.emoji-picker-container {
+    position: relative;
+    width: 300px;
+}

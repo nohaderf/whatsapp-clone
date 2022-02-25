@@ -1,0 +1,42 @@
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 50px;
+    padding: 0px 20px;
+    background-color: white;
+    border-bottom: 1px solid #dddddd;
+  }
+  nav a {
+    color: black;
+    text-decoration: none;
+  }
+  nav div a {
+    margin-right: 20px;
+  }
+
+  .whatsapp_logo {
+      width: 40px;
+  }
+
+  h3 {
+      align-items: center;
+  }
+
+  nav div {
+      font-size: 16px;
+      font-weight: 600;
+  }
+
+  .logout-btn {
+    outline: none; 
+    border: 0;
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 5px;
+    background-color: #0a8d48;
+    border-radius: 3px;
+    color: white;
+    padding: 5px 15px;
+    cursor: pointer;
+  }
