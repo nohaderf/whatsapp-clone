@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { onSnapshot, doc, getDoc } from 'firebase/firestore';
 import { db } from '../firebase';
-import { Link } from 'react-router-dom';
 
 import Img from '../blank-profile-picture.png';
 import './User.css';
@@ -25,29 +24,6 @@ function User({ user, selectUser, user1, chat }) {
 
   return (
     <>
-    <div className="sidebar">
-      <div className="sidebar-header">
-          <span>
-              <img className="curr-avatar" src={ Img } />    
-          </span>
-          <div className="sidebar-headerRight">
-              <Link to="/profile">
-                <span className="material-icons" title="Profile">donut_large</span>
-              </Link>
-              <a href="#">
-                <span className="material-icons" title="New Chat">chat</span>
-              </a>
-              <a href="#">
-                <span className="material-icons" title="More...">more_vert</span>
-              </a>
-          </div>
-      </div>
-      <div className="sidebar-search">
-          <div className="sidebar-searchContainer">
-              <span className="material-icons">search</span>
-              <input placeholder="Search in chat" type="text" />
-          </div>
-      </div>
       <div 
         className={`user-wrapper ${chat.name === user.name && "selected-user"}`} 
         onClick={() => selectUser(user)}
@@ -74,7 +50,6 @@ function User({ user, selectUser, user1, chat }) {
           <div 
             className={`user-status ${user.isOnline ? "online" : "offline"}`}
           ></div>
-        </div>
       </div>
     </div>
     <div

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { db, auth, storage } from '../firebase';
+import { Link } from 'react-router-dom';
 import { 
   collection, 
   query, 
@@ -121,6 +122,30 @@ function Home() {
   return (
     <div className="home-container">
       <div className="users-container">
+        <div className="sidebar">
+          <div className="sidebar-header">
+              <span>
+                  <img className="curr-avatar" src={ Img } />    
+              </span>
+              <div className="sidebar-headerRight">
+                  <Link to="/profile">
+                    <span className="material-icons" title="Profile">donut_large</span>
+                  </Link>
+                  <a href="#">
+                    <span className="material-icons" title="New Chat">chat</span>
+                  </a>
+                  <a href="#">
+                    <span className="material-icons" title="More...">more_vert</span>
+                  </a>
+              </div>
+            </div>
+        </div>
+        {/* <div className="sidebar-search">
+            <div className="sidebar-searchContainer">
+                <span className="material-icons">search</span>
+                <input placeholder="Search in chat" type="text" />
+            </div>
+        </div> */}
           {users.map(user => {
             return <User 
               key={user.uid} 
