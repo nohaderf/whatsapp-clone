@@ -5,7 +5,7 @@ import { getFirestore } from 'firebase/firestore';
 import { getStorage} from 'firebase/storage';
 
 const firebaseConfig = {
-  apiKey: AIzaSyAWhSJsogIGrpWePvv9B17xmf4HEXdnIFs,
+  apiKey: "AIzaSyAWhSJsogIGrpWePvv9B17xmf4HEXdnIFs",
   authDomain: process.env.REACT_APP_AUTH_DOMAIN,
   databaseURL: process.env.REACT_APP_DATABASE_URL,
   projectId: process.env.REACT_APP_PROJECT_ID,
