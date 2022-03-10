@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { db, auth, storage } from '../firebase';
 import { Link } from 'react-router-dom';
+import { useStateValue } from "../StateProvider";
+import { actionTypes } from '../reducer';
+
 import { 
   collection, 
   query, 
@@ -25,19 +28,19 @@ import MessageForm from '../components/MessageForm';
 import Message from '../components/Message';
 import Img from '../blank-profile-picture.png';
 
+
 function Home() {
   const [users, setUsers] = useState([]);
   const [chat, setChat] = useState("");
   const [text, setText] = useState("");
   const [img, setImg] = useState("")
   const [msgs, setMsgs] = useState([]);
-  const [currUser, setCurrUser] = useState();
-
+  const [{ avatar }, dispatch] = useStateValue();
 
   const user1 = auth.currentUser.uid;
 
   useEffect(() => {
-    const usersRef = collection(db, "users")
+    const usersRef = collection(db, 'users')
     //create query object
     const q = query(usersRef, where('uid', 'not-in', [user1]))
     //execute the query
@@ -48,14 +51,18 @@ function Home() {
       })
       setUsers(users)
     })
-    getDoc(doc(db, "users", user1)).then((docSnap) => {
-      if (docSnap.exists) {
-        setCurrUser(docSnap.data());
-      }
-    });
-    console.log(currUser)
     return () => unsub();
-  }, [])
+  }, [user1])
+
+  useEffect(() => {
+    const unsubscribe = onSnapshot(doc(db, "users", user1), (doc) => {
+      dispatch({
+        type: actionTypes.SET_AVATAR,
+        avatar: doc.data().avatar
+      })
+  });
+      return () => unsubscribe();
+  }, [avatar, dispatch, user1])
 
   const selectUser = async (user) => {
     setChat(user);
@@ -80,7 +87,7 @@ function Home() {
     if (docSnap.data() && docSnap.data().from !== user1) {
       // update last message doc, set unread to false
       await updateDoc(doc(db, "lastMsg", id), { unread: false });
-}
+    }
   }
 
   const handleSubmit = async e => {
@@ -118,23 +125,22 @@ function Home() {
     setText("")
   }
 
-
   return (
     <div className="home-container">
       <div className="users-container">
         <div className="sidebar">
           <div className="sidebar-header">
               <span>
-                  <img className="curr-avatar" src={ Img } />    
+                  <img className="curr-avatar" src={ avatar || Img } alt="avatar"/>    
               </span>
               <div className="sidebar-headerRight">
                   <Link to="/profile">
                     <span className="material-icons" title="Profile">donut_large</span>
                   </Link>
-                  <a href="#">
+                  <a href="/">
                     <span className="material-icons" title="New Chat">chat</span>
                   </a>
-                  <a href="#">
+                  <a href="/">
                     <span className="material-icons" title="More...">more_vert</span>
                   </a>
               </div>
@@ -153,7 +159,6 @@ function Home() {
               selectUser={selectUser} 
               user1={user1}
               chat={chat}
-              currUser={currUser}
             />
           })}
         </div>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { onSnapshot, doc, getDoc } from 'firebase/firestore';
+import { onSnapshot, doc } from 'firebase/firestore';
 import { db } from '../firebase';
 
 import Img from '../blank-profile-picture.png';
@@ -14,13 +14,10 @@ function User({ user, selectUser, user1, chat }) {
     let unsub = onSnapshot(doc(db, "lastMsg", id), (doc) => {
       setData(doc.data());
     });
-    // getDoc(doc(db, "users", user1)).then((docSnap) => {
-    //   if (docSnap.exists) {
-    //     setCurrUser(docSnap.data());
-    //   }
-    // });
+
     return () => unsub();
-  }, []);
+  }, [user1,user2]);
+
 
   return (
     <>

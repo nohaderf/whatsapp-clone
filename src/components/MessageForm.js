@@ -6,16 +6,10 @@ import Picker from 'emoji-picker-react';
 
 function MessageForm({ text, setText, handleSubmit, setImg }) {
     const [showEmojis, setShowEmojis] = useState(false);
-    // const [chosenEmoji, setChosenEmoji] = useState(null);
 
     const onEmojiClick= (e, emojiObject) => {
         setText(prevInput => prevInput + emojiObject.emoji);
         setShowEmojis(false);
-        // setChosenEmoji(emojiObject);
-    }
-
-    const handleTextChange = e => {
-        setText(e.target.value);
     }
 
     const handleShowEmojis = () => {
