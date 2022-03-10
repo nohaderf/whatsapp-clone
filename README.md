@@ -1,7 +1,6 @@
 # Whatsapp Clone
 
-- This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-- The backend is supported by Google Firebase.
+- This project was created with a React frontend and supported by a Google Firebase backend.
 
 - Other frameworks included:
     1. emoji-picker-react - for emoji feature
