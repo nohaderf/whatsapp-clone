@@ -1,11 +1,17 @@
 # Whatsapp Clone
 
-- This project was created with a React frontend and supported by a Google Firebase backend.
+- This project was created with a React frontend and supported by Google Firebase.
 
-- Other frameworks included:
+- Toolkits included:
     1. emoji-picker-react - for emoji feature
     2. Material UI & Heroicons - for common icons
     3. React moment - to incorporate time
+
+## Features
+- A user can make an account
+- A user can log in
+- A user can add a profile picture
+- A user can start a private chat with another user
 
 ## Available Scripts
 
